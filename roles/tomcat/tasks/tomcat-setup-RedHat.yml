@@ -1,11 +1,17 @@
-- name: Add EPEL repository
-  yum:
-    name: epel-release
+- name: Install EPEL RPM Key
+  rpm_key:
     state: present
+    key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
+
+- name: Install EPEL Release
+  yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    update_cache: yes
+    state: latest
 
 - name: Install basic packages
   package:
-    name: ['vim','bash-completion','tmux','tree','htop','wget','unzip','curl','git']
+    name: ['tree','htop','wget','unzip','curl','git']
     state: present
 
 - name: Install Java 8 CentOS
