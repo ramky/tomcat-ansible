@@ -67,12 +67,12 @@
     enabled: yes
   when: ansible_service_mgr == "systemd"
 
-- name: Start and enable firewalld
-  service:
-    name: firewalld
-    state: started
-    enabled: yes
-  when: ansible_service_mgr == "systemd"
+#- name: Start and enable firewalld
+#  service:
+#    name: firewalld
+#    state: started
+#    enabled: yes
+#  when: ansible_service_mgr == "systemd"
 
 - name: Open tomcat port on the firewall
   firewalld:
